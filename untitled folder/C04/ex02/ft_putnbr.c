@@ -1,22 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jait-chd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 21:44:14 by jait-chd          #+#    #+#             */
-/*   Updated: 2024/09/18 10:18:43 by jait-chd         ###   ########.fr       */
+/*   Created: 2024/09/08 06:55:04 by jait-chd          #+#    #+#             */
+/*   Updated: 2024/09/08 06:59:54 by jait-chd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include <unistd.h>
 
-void	ft_putchar(char c);
-void	ft_swap(int *a, int *b);
-void	ft_putstr(char *str);
-int		ft_strlen(char *str);
-int		ft_strcmp(char *s1, char *s);
+void	ft_putch(char c)
+{
+	write(1, &c, 1);
+}
 
-#endif
+void	ft_putnbr(int nb)
+{
+	if (nb < 0)
+	{
+		write(1, "-", 1);
+		if (nb == -2147483648)
+		{
+			write(1, "214748364", 9);
+			nb = -8;
+		}
+		nb = -nb;
+	}
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
+	}
+	else
+	{
+		ft_putch(nb + 48);
+	}
+}
+/*int main() {
+	ft_putnbr(2147483648);
+}*/

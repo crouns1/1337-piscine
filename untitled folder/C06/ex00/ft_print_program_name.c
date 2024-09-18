@@ -1,22 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft.h                                               :+:      :+:    :+:   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jait-chd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/16 21:44:14 by jait-chd          #+#    #+#             */
-/*   Updated: 2024/09/18 10:18:43 by jait-chd         ###   ########.fr       */
+/*   Created: 2024/09/10 17:46:29 by jait-chd          #+#    #+#             */
+/*   Updated: 2024/09/11 19:28:09 by jait-chd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#include <unistd.h>
 
-void	ft_putchar(char c);
-void	ft_swap(int *a, int *b);
-void	ft_putstr(char *str);
-int		ft_strlen(char *str);
-int		ft_strcmp(char *s1, char *s);
+int	main(int c, char **v)
+{
+	int	i;
+	i=0;
+	if(c == 1) {
+		while (v[0][i] != '\0')
+		{
+			write(1, &v[0][i], 1);
+		i++;
+		}
+		write(1,"\n",1);
+		return 0;
+ }
+}
 
-#endif

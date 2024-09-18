@@ -1,58 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jait-chd <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/15 13:55:37 by jait-chd          #+#    #+#             */
-/*   Updated: 2024/09/16 15:47:19 by jait-chd         ###   ########.fr       */
+/*   Created: 2024/09/08 03:16:24 by jait-chd          #+#    #+#             */
+/*   Updated: 2024/09/08 03:16:38 by jait-chd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include <stdlib.h>
 
-int	len(char *s)
+char	*ft_strstr(char *str, char *to_find)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (s[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(char *src)
-{
-	int		i;
-	char	*dest;
-
-	i = 0;
-	dest = malloc(sizeof(char) * len(src) + 1);
-	if (!dest)
+	j = 0;
+	if (to_find == 0)
 	{
-		return (0);
+		return (str);
 	}
-	if (!src)
-		return (NULL);
-	while (src[i])
+	while (str[i] != 0)
 	{
-		dest[i] = src[i];
+		while ((str[i + j] == to_find[j]) && to_find[i + j] != 0)
+		{
+			j++;
+		}
+		if (to_find[j] == 0)
+		{
+			return (str + i);
+		}
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	j = 0;
+	return (0);
 }
-/*int	main(void)
-
-{
-	char	a[] = "hello";
-	char	*b;
-
-	// free(a);
-	b = ft_strdup(a);
-	printf("%s", ft_strdup(a));
-	printf("%s",b);
-	free(b);
+/*int main () {
+	char a[] = "jamal";
+	char b[] = "la";
+	printf("%s",ft_strstr(a,b));
 }*/
